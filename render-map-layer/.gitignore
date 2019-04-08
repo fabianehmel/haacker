@@ -1,0 +1,4 @@
+config.*.js
+*config.js
+!example.config.js
+!config.example.js

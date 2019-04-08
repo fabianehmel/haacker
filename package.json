@@ -1,0 +1,32 @@
+{
+  "name": "haaker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bezier-easing": "^2.1.0",
+    "canvas": "^2.3.1",
+    "chroma-js": "^1.4.0",
+    "d3": "^4.13.0",
+    "d3-geo": "^1.11.1",
+    "d3-geo-graticule": "^0.0.0",
+    "d3-geo-projection": "2.3.2",
+    "d3-path": "^1.0.7",
+    "d3-scale": "^1.0.7",
+    "d3-selection": "^1.3.2",
+    "jsdom": "^13.2.0",
+    "mkdirp": "^0.5.1",
+    "npm": "^5.10.0",
+    "ora": "^3.0.0",
+    "topojson-client": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "render-map-layer": "node render-map-layer/main.js",
+    "render-map-labels": "node render-map-labels/main.js",
+    "render-map-cutline": "node render-map-cutline/main.js",
+    "process-etopo1-data": "sh process-etopo1-data/main.sh"
+  },
+  "author": "Fabian Ehmel",
+  "license": "ISC"
+}
