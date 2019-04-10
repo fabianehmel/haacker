@@ -3,10 +3,13 @@
 A library of scripts to generate static maps using open source technology.
 
 ## Background
+
+### Purpose
 This library was originally developed to support the design process of a printed butterfly map. You can find out more about the map itself in the related detailed [documentation](https://interface.fh-potsdam.de/butterfly/).
 
 ![preview of the butterfly map](map_preview.jpg)
 
+### Naming
 The library is named after [Hermann Haack](https://de.wikipedia.org/wiki/Hermann_Haack_(Kartograf)), a german cartographer.
 
 ## Installation
