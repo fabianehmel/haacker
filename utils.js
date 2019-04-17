@@ -14,7 +14,7 @@ function getProjectionFromConfig(config) {
   let finalProjection;
 
   if ("projection" in config) {
-    const { scalefactor, settings } = projection;
+    const { settings } = projection;
     finalProjection = d3[projection.name]();
 
     for (let setting in settings) {
@@ -22,14 +22,13 @@ function getProjectionFromConfig(config) {
         finalProjection[setting](settings[setting]);
       }
     }
-
-    finalProjection.scale(width / scalefactor);
   } else {
     finalProjection = d3.geoMercator();
-    finalProjection.scale(width / 2 / Math.PI);
   }
-
-  return finalProjection.translate([width / 2, height / 2]);
+  
+  return finalProjection
+    .fitSize([width, height], { type: "Sphere" })
+    .translate([width / 2, height / 2]);
 }
 
 function createFolderIfNotExists(folder) {

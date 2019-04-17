@@ -4,8 +4,8 @@ exports.config = {
     width: 1000
   },
   projection: {
-    name: "mercator",
-    settings: { 
+    name: "geoMercator",
+    settings: {
       rotate: [0, 0],
       precision: 0
     }
@@ -19,13 +19,14 @@ exports.config = {
       type: "levels",
       properties: {
         path: "path/to/levels/in/geojson/format",
-        color: {
-          easing: [1.0, 1.0, 1.0, 1.0],
-          scale: ["#000000", "#ffffff"]
+        style: {
+          color: {
+            easing: [1.0, 1.0, 1.0, 1.0],
+            scale: ["#000000", "#ffffff"]
+          }
         }
       }
     },
-
     {
       type: "filled",
       properties: {
