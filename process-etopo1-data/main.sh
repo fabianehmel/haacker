@@ -1,33 +1,51 @@
 #!/bin/sh
 
-# ----------------------
-# PARAMETERS
-# ----------------------
-
-# levels (in meter)
-startLevel=-10000
-endLevel=9000
-
-# desired resolution between levels in meter
-resolution=20
-
-# our iterator variable
-currentLevel="$startLevel"
-
-# available ETOPO1 variantes
+# these are the available ETOPO1 variantes
+# do not change these
 etopo1_bed="ETOPO1_Bed_g"
 etopo1_ice="ETOPO1_Ice_g"
 
+
+# ----------------------
+# ADJUSTABLE SETTINGS
+# 
+# Adjust these
+# parameters to get
+# your desired results
+# ----------------------
+
+# desired level range (in meter)
+# default is -10000 to 9000
+startLevel=-10000
+endLevel=9000
+
+# Resolution: desired distance between levels in meter
+resolution=100
+
+# Decide which ETOPO1 data set you want to use
 # either etopo1_bed or etopo1_ice
 etopo1_variant=$etopo1_bed
 
-# folders
+# number of parallel processes
+# defines how many levels are processed at the same time
+# could be lower or higher, depending on computer
+PARALLEL_PROCESSES=8
+
+# folders that the script will use
 folder_base="./data"
 folder_temp="./temp"
 folder_out=$folder_base"/levels"
 folder_in=$folder_base"/ETOPO1"
 
-# Create these directorys if they don't exist
+
+# ----------------------
+# BASICS
+# ----------------------
+
+# our iterator variable
+currentLevel="$startLevel"
+
+# Create the directorys if they don't exist
 mkdir -p $folder_base
 mkdir -p $folder_temp
 mkdir -p $folder_out
@@ -42,12 +60,6 @@ zip_in=$folder_in/$etopo1_variant"_geotiff.zip"
 download_url_ice="https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip"
 download_url_bed="https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/bedrock/grid_registered/georeferenced_tiff/ETOPO1_Bed_g_geotiff.zip"
 download_url=$download_url_ice && [[ $etopo1_variant == $etopo1_bed ]]  && download_url=$download_url_bed
-
-
-# number of parallel processes
-# defines how many levels are processed at the same time
-# could be lower or higher, depending on computer
-PARALLEL_PROCESSES=8
 
 
 # ----------------------
