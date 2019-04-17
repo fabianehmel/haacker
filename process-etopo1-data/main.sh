@@ -20,7 +20,7 @@ etopo1_bed="ETOPO1_Bed_g"
 etopo1_ice="ETOPO1_Ice_g"
 
 # either etopo1_bed or etopo1_ice
-etopo1_variant=$etopo1_bed
+etopo1_variant=$etopo1_ice
 
 # folders
 folder_base="./data"
