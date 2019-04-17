@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # ----------------------
 # PARAMETERS
 # ----------------------
@@ -20,7 +19,7 @@ etopo1_bed="ETOPO1_Bed_g"
 etopo1_ice="ETOPO1_Ice_g"
 
 # either etopo1_bed or etopo1_ice
-etopo1_variant=$etopo1_ice
+etopo1_variant=$etopo1_bed
 
 # folders
 folder_base="./data"
@@ -39,7 +38,11 @@ geotiff_in=$folder_in/$etopo1_variant"_geotiff.tif"
 geotiff_cropped=$folder_in/$etopo1_variant"_crop.tif"
 zip_in=$folder_in/$etopo1_variant"_geotiff.zip"
 
-download_url="https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/bedrock/grid_registered/georeferenced_tiff/"$etopo1_variant"_geotiff.zip"
+# download urls
+download_url_ice="https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/grid_registered/georeferenced_tiff/ETOPO1_Ice_g_geotiff.zip"
+download_url_bed="https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/bedrock/grid_registered/georeferenced_tiff/ETOPO1_Bed_g_geotiff.zip"
+download_url=$download_url_ice && [[ $etopo1_variant == $etopo1_bed ]]  && download_url=$download_url_bed
+
 
 # number of parallel processes
 # defines how many levels are processed at the same time
