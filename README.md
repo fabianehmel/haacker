@@ -56,6 +56,14 @@ The tool supports these layer types:
 - `stroked` — an outlined layer, consisting of a a single GeoJSON
 - `levels` — a series of filled levels, consisting of a set of GeoJSONs
 
+#### Properties
+
+##### `filters`
+Filter the levels based on their height. Provide an array with filter functions as you would do in a JS `.filter` function. E.g., use `filters: [level => level > 0]` to only render layers above the sea level.
+
+##### `domain``
+: ["min", 0, "max"],
+
 Please see the `config.example.js` for a reference how to use these layers. The config files need to be placed in the folder `render-map-layer`.
 To run the script, use the command `npm run render-map-layer` in the root directory. By default, the script will look for a `config.js` file in the folder `render-map-layer`. If you want to use another file, provide it's name as a argument like this: `npm run render-map-layer my.special.config`.
 
